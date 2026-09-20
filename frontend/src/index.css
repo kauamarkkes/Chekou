@@ -109,3 +109,22 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+:root {
+  --fundo-principal: #0e0b1a;
+  --fundo-sidebar: #14101f;
+  --fundo-card: #1a1628;
+  --roxo-destaque: #7c3aed;
+  --roxo-claro: #a78bfa;
+  --texto-principal: #ffffff;
+  --texto-secundario: #9ca3af;
+  --verde-sucesso: #22c55e;
+  --vermelho-alerta: #ef4444;
+  --amarelo-aviso: #eab308;
+}
+
+body {
+  background-color: var(--fundo-principal);
+  color: var(--texto-principal);
+  font-family: system-ui, sans-serif;
+}
