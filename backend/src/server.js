@@ -6,7 +6,7 @@ const app = express(); //servidor na variavel app
 const cors = require("cors"); //lib do cors (necessario para falar com o front-end)
 const PORTA = 3000;
 app.use(cors()); //permissao para outra porta conversar com o servidor
-const user = require("./rotas/loguin"); //arquivo da rotas de usuario
+const user = require("./rotas/login"); //arquivo da rotas de usuario
 const taref = require("./rotas/tarefas"); //arquivo da rota de tarefas
 app.use(express.json()); //ler tudo em formato json
  //o que acontecer mandar para rotasTaref
