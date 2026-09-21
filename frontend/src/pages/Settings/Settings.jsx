@@ -1,31 +1,52 @@
+import { useState } from "react";
+import "../../App.css";
+
 function Settings() {
+  const [nome, setNome] = useState("Marcus");
+  const [email, setEmail] = useState("");
+
+  function salvar(e) {
+    e.preventDefault();
+    // TODO: quando o backend tiver rota de usuário, enviar aqui
+    alert("Alterações salvas (simulado)");
+  }
+
   return (
-    <div style={{ padding: '30px' }}>
-      <h1>Settings</h1>
-      <div style={{
-        background: 'var(--fundo-card)',
-        padding: '20px',
-        borderRadius: '12px',
-        marginTop: '20px',
-        maxWidth: '400px'
-      }}>
-        <label style={{ display: 'block', marginBottom: '8px', color: 'var(--texto-secundario)' }}>
-          Nome do usuário
-        </label>
-        <input
-          type="text"
-          placeholder="Seu nome"
-          style={{
-            width: '100%',
-            padding: '10px',
-            borderRadius: '8px',
-            border: 'none',
-            background: 'var(--fundo-principal)',
-            color: '#fff'
-          }}
-        />
-      </div>
-    </div>
+    <main className="main">
+      <header className="header">
+        <h1>Settings</h1>
+        <p>Gerencie suas preferências de conta.</p>
+      </header>
+
+      <section className="activity-card settings-card">
+        <div className="activity-header">
+          <h2>Perfil</h2>
+        </div>
+
+        <form onSubmit={salvar}>
+          <div className="settings-field">
+            <label>Nome</label>
+            <input
+              type="text"
+              value={nome}
+              onChange={(e) => setNome(e.target.value)}
+            />
+          </div>
+          <div className="settings-field">
+            <label>E-mail</label>
+            <input
+              type="email"
+              placeholder="seuemail@exemplo.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <button className="settings-save-btn" type="submit">
+            Salvar alterações
+          </button>
+        </form>
+      </section>
+    </main>
   );
 }
 
