@@ -344,3 +344,233 @@ a {
     padding: 18px 10px 40px;
   }
 }
+
+/* ===== My Tasks ===== */
+
+.tasks-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.tasks-filter {
+  display: flex;
+  gap: 8px;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--texto-secundario, #9ca3af);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.filter-btn:hover {
+  border-color: rgba(124, 58, 237, 0.5);
+  color: #fff;
+}
+
+.filter-btn.active {
+  background: #7c3aed;
+  border-color: #7c3aed;
+  color: #fff;
+}
+
+.tasks-counter {
+  font-size: 13px;
+  color: var(--texto-secundario, #9ca3af);
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.task-checkbox {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s ease;
+}
+
+.task-checkbox.checked {
+  background: #22c55e;
+  border-color: #22c55e;
+}
+
+.task-checkbox.checked::after {
+  content: "✓";
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.task-title {
+  flex: 1;
+  font-size: 14px;
+}
+
+.task-title.done {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/* ===== Projects ===== */
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.project-card {
+  background: #14101f;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  border-color: rgba(124, 58, 237, 0.4);
+  transform: translateY(-2px);
+}
+
+.project-card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.project-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.project-dot.purple { background: #7c3aed; }
+.project-dot.yellow { background: #eab308; }
+.project-dot.blue { background: #3b82f6; }
+
+.project-name {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.project-meta {
+  font-size: 12px;
+  color: var(--texto-secundario, #9ca3af);
+  margin-bottom: 10px;
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: #7c3aed;
+  border-radius: 10px;
+}
+
+/* ===== Analytics ===== */
+
+.chart-card {
+  margin-top: 16px;
+}
+
+.bar-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  height: 160px;
+  padding: 20px 10px 0;
+}
+
+.bar-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.bar-fill {
+  width: 100%;
+  max-width: 32px;
+  background: linear-gradient(180deg, #a78bfa, #7c3aed);
+  border-radius: 6px 6px 0 0;
+}
+
+.bar-label {
+  font-size: 12px;
+  color: var(--texto-secundario, #9ca3af);
+}
+
+/* ===== Settings ===== */
+
+.settings-card {
+  max-width: 480px;
+  margin-top: 16px;
+}
+
+.settings-field {
+  margin-bottom: 16px;
+}
+
+.settings-field label {
+  display: block;
+  font-size: 13px;
+  color: var(--texto-secundario, #9ca3af);
+  margin-bottom: 6px;
+}
+
+.settings-field input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #0e0b1a;
+  color: #fff;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.settings-field input:focus {
+  border-color: #7c3aed;
+}
+
+.settings-save-btn {
+  background: #7c3aed;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.settings-save-btn:hover {
+  background: #6d28d9;
+}
