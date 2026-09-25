@@ -1,10 +1,6 @@
+import { Link } from "react-router-dom";
+import { projetos } from "../../data/projetos";
 import "../../global.css";
-
-const projetos = [
-  { nome: "Engine Team", cor: "purple", tarefas: 12, concluidas: 8 },
-  { nome: "Design Sprint", cor: "yellow", tarefas: 6, concluidas: 2 },
-  { nome: "V2 Launch", cor: "blue", tarefas: 20, concluidas: 15 },
-];
 
 function Projects() {
   return (
