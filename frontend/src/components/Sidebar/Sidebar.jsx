@@ -1,10 +1,5 @@
 import { NavLink } from "react-router-dom";
-
-const workspaces = [
-  ["Engine Team", "purple"],
-  ["Design Sprint", "yellow"],
-  ["V2 Launch", "blue"],
-];
+import { projetos } from "../../data/projetos";
 
 function Sidebar() {
   return (
@@ -20,11 +15,11 @@ function Sidebar() {
 
       <div className="workspace-section">
         <div className="section-title">MY WORKSPACES</div>
-        {workspaces.map(([name, color]) => (
-          <a className="workspace" href="#" key={name}>
-            <i className={`workspace-dot ${color}`} />
-            {name}
-          </a>
+        {projetos.map((p) => (
+          <NavLink className="workspace" to={p.rota} key={p.nome}>
+            <i className={`workspace-dot ${p.cor}`} />
+            {p.nome}
+          </NavLink>
         ))}
       </div>
     </aside>

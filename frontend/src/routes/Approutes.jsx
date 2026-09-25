@@ -7,6 +7,9 @@ import MyTasks from "../pages/Mytasks/Mytasks";
 import Projects from "../pages/Projects/Projects";
 import Analytics from "../pages/Analytics/Analytics";
 import Settings from "../pages/Settings/Settings";
+import EngineTeam from "../pages/Engineteam/EngineTeam";
+import DesignSprint from "../pages/Designsprint/DesignSprint";
+import V2Launch from "../pages/V2launch/V2Launch";
 
 function AppRoutes() {
   return (
@@ -16,6 +19,9 @@ function AppRoutes() {
       <Route path="/sobre" element={<Sobre />} />
       <Route path="/tarefas" element={<MyTasks />} />
       <Route path="/projetos" element={<Projects />} />
+      <Route path="/projetos/engine-team" element={<EngineTeam />} />
+      <Route path="/projetos/design-sprint" element={<DesignSprint />} />
+      <Route path="/projetos/v2-launch" element={<V2Launch />} />
       <Route path="/analytics" element={<Analytics />} />
       <Route path="/configuracoes" element={<Settings />} />
     </Routes>
