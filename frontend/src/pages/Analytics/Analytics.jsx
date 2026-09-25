@@ -1,10 +1,10 @@
 import "../../global.css";
 
 const metricas = [
-  { titulo: "Tasks Completed", valor: 47, variacao: "+12%", tipo: "positive" },
-  { titulo: "In Progress", valor: 12, variacao: "+3%", tipo: "neutral" },
-  { titulo: "Pending Triage", valor: 8, variacao: "-16%", tipo: "negative" },
-  { titulo: "Overdue", valor: 3, variacao: "+1", tipo: "negative" },
+  { titulo: "Tasks Completas", valor: 47, variacao: "+12%", tipo: "positive" },
+  { titulo: "Em Progresso", valor: 12, variacao: "+3%", tipo: "neutral" },
+  { titulo: "aguardando triagem", valor: 8, variacao: "-16%", tipo: "negative" },
+  { titulo: "atrasadas", valor: 3, variacao: "+1", tipo: "negative" },
 ];
 
 const semana = [
