@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import "../../App.css";
+import "../../global.css";
 
 function MyTasks() {
   const [tarefas, setTarefas] = useState([]);

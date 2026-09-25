@@ -1,20 +1,55 @@
+/* ===== 1. VARIÁVEIS E RAIZ ===== */
+:root {
+  --fundo-principal: #05080d;
+  --fundo-sidebar: #0b101a;
+  --fundo-card: #0d121b;
+  --fundo-card-hover: #14101f;
+  --roxo-destaque: #7c3aed;
+  --roxo-claro: #a78bfa;
+  --texto-principal: #e9ebf0;
+  --texto-secundario: #747d8e;
+  --verde-sucesso: #22c55e;
+  --vermelho-alerta: #ef4444;
+  --amarelo-aviso: #eab308;
+  --border-color: #171d27;
+  
+  --sans: Inter, system-ui, Arial, Helvetica, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+}
+
+/* ===== 2. RESET E ESTILOS GLOBAIS ===== */
 * {
   box-sizing: border-box;
 }
 
 html, body, #root {
   margin: 0;
+  padding: 0;
   min-width: 320px;
-  min-height: 100%;
+  min-height: 100vh;
 }
 
 body {
-  font-family: Inter, Arial, Helvetica, sans-serif;
-  background: #05080d;
-  color: #e9ebf0;
+  font-family: var(--sans);
+  background-color: var(--fundo-principal);
+  color: var(--texto-principal);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-button, a {
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--sans);
+  font-weight: 600;
+  color: #f1f2f6;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+button, a, input {
   font: inherit;
 }
 
@@ -22,22 +57,56 @@ a {
   text-decoration: none;
 }
 
+code, .counter {
+  font-family: var(--mono);
+  display: inline-flex;
+  border-radius: 4px;
+  color: #f3f4f6;
+  font-size: 15px;
+  line-height: 135%;
+  padding: 4px 8px;
+  background: #1f2028;
+}
+
+/* ===== 3. LAYOUT PRINCIPAL (DASHBOARD) ===== */
 .dashboard {
   min-height: 100vh;
   display: flex;
   background:
     radial-gradient(circle at 65% -20%, rgba(88, 61, 164, .07), transparent 35%),
-    #05080d;
+    var(--fundo-principal);
 }
 
-/* Sidebar */
+.main {
+  flex: 1;
+  min-width: 0;
+  padding: 20px 17px 50px;
+}
+
+.header {
+  margin-bottom: 17px;
+}
+
+.header h1 {
+  margin-bottom: 3px;
+  font-size: 18px;
+  line-height: 1.15;
+  letter-spacing: -.03em;
+}
+
+.header p {
+  color: #697385;
+  font-size: 9px;
+}
+
+/* ===== 4. SIDEBAR ===== */
 .sidebar {
   width: 145px;
   min-width: 145px;
   min-height: 100vh;
   padding: 0 9px;
-  background: #0b101a;
-  border-right: 1px solid #171d27;
+  background: var(--fundo-sidebar);
+  border-right: 1px solid var(--border-color);
 }
 
 .brand {
@@ -71,7 +140,7 @@ a {
   align-items: center;
   gap: 9px;
   border-radius: 5px;
-  color: #747d8e;
+  color: var(--texto-secundario);
   font-size: 10px;
 }
 
@@ -121,32 +190,7 @@ a {
 .workspace-dot.yellow { background: #e6b933; }
 .workspace-dot.blue { background: #3da0e9; }
 
-/* Main */
-.main {
-  flex: 1;
-  min-width: 0;
-  padding: 20px 17px 50px;
-}
-
-.header {
-  margin-bottom: 17px;
-}
-
-.header h1 {
-  margin: 0 0 3px;
-  color: #f1f2f6;
-  font-size: 18px;
-  line-height: 1.15;
-  letter-spacing: -.03em;
-}
-
-.header p {
-  margin: 0;
-  color: #697385;
-  font-size: 9px;
-}
-
-/* Cards */
+/* ===== 5. STATS & CARDS ===== */
 .stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -203,7 +247,7 @@ a {
   background: rgba(218, 143, 45, .13);
 }
 
-/* Activity */
+/* ===== 6. ACTIVITIES ===== */
 .activity-card {
   border: 1px solid #181f2a;
   border-radius: 8px;
@@ -222,7 +266,6 @@ a {
 }
 
 .activity-header h2 {
-  margin: 0;
   color: #e0e4eb;
   font-size: 9px;
 }
@@ -273,7 +316,7 @@ a {
   align-items: center;
   flex-wrap: wrap;
   gap: 4px;
-  color: #747e8e;
+  color: var(--texto-secundario);
   font-size: 8px;
 }
 
@@ -305,48 +348,7 @@ a {
   font-size: 7px;
 }
 
-/* Responsive */
-@media (max-width: 720px) {
-  .sidebar {
-    width: 118px;
-    min-width: 118px;
-  }
-
-  .stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 520px) {
-  .dashboard {
-    display: block;
-  }
-
-  .sidebar {
-    width: 100%;
-    min-width: 0;
-    min-height: auto;
-    padding: 8px;
-    border-right: 0;
-    border-bottom: 1px solid #171d27;
-  }
-
-  .nav {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .workspace-section {
-    display: none;
-  }
-
-  .main {
-    padding: 18px 10px 40px;
-  }
-}
-
-/* ===== My Tasks ===== */
-
+/* ===== 7. MY TASKS ===== */
 .tasks-toolbar {
   display: flex;
   justify-content: space-between;
@@ -362,7 +364,7 @@ a {
 .filter-btn {
   background: transparent;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--texto-secundario, #9ca3af);
+  color: var(--texto-secundario);
   padding: 6px 14px;
   border-radius: 20px;
   font-size: 13px;
@@ -376,14 +378,14 @@ a {
 }
 
 .filter-btn.active {
-  background: #7c3aed;
-  border-color: #7c3aed;
+  background: var(--roxo-destaque);
+  border-color: var(--roxo-destaque);
   color: #fff;
 }
 
 .tasks-counter {
   font-size: 13px;
-  color: var(--texto-secundario, #9ca3af);
+  color: var(--texto-secundario);
 }
 
 .task-item {
@@ -407,8 +409,8 @@ a {
 }
 
 .task-checkbox.checked {
-  background: #22c55e;
-  border-color: #22c55e;
+  background: var(--verde-sucesso);
+  border-color: var(--verde-sucesso);
 }
 
 .task-checkbox.checked::after {
@@ -428,8 +430,7 @@ a {
   opacity: 0.5;
 }
 
-/* ===== Projects ===== */
-
+/* ===== 8. PROJECTS ===== */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -437,7 +438,7 @@ a {
 }
 
 .project-card {
-  background: #14101f;
+  background: var(--fundo-card-hover);
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 12px;
   padding: 20px;
@@ -463,8 +464,8 @@ a {
   border-radius: 50%;
 }
 
-.project-dot.purple { background: #7c3aed; }
-.project-dot.yellow { background: #eab308; }
+.project-dot.purple { background: var(--roxo-destaque); }
+.project-dot.yellow { background: var(--amarelo-aviso); }
 .project-dot.blue { background: #3b82f6; }
 
 .project-name {
@@ -474,7 +475,7 @@ a {
 
 .project-meta {
   font-size: 12px;
-  color: var(--texto-secundario, #9ca3af);
+  color: var(--texto-secundario);
   margin-bottom: 10px;
 }
 
@@ -488,12 +489,11 @@ a {
 
 .progress-bar-fill {
   height: 100%;
-  background: #7c3aed;
+  background: var(--roxo-destaque);
   border-radius: 10px;
 }
 
-/* ===== Analytics ===== */
-
+/* ===== 9. ANALYTICS ===== */
 .chart-card {
   margin-top: 16px;
 }
@@ -517,17 +517,16 @@ a {
 .bar-fill {
   width: 100%;
   max-width: 32px;
-  background: linear-gradient(180deg, #a78bfa, #7c3aed);
+  background: linear-gradient(180deg, var(--roxo-claro), var(--roxo-destaque));
   border-radius: 6px 6px 0 0;
 }
 
 .bar-label {
   font-size: 12px;
-  color: var(--texto-secundario, #9ca3af);
+  color: var(--texto-secundario);
 }
 
-/* ===== Settings ===== */
-
+/* ===== 10. SETTINGS ===== */
 .settings-card {
   max-width: 480px;
   margin-top: 16px;
@@ -540,7 +539,7 @@ a {
 .settings-field label {
   display: block;
   font-size: 13px;
-  color: var(--texto-secundario, #9ca3af);
+  color: var(--texto-secundario);
   margin-bottom: 6px;
 }
 
@@ -557,11 +556,11 @@ a {
 }
 
 .settings-field input:focus {
-  border-color: #7c3aed;
+  border-color: var(--roxo-destaque);
 }
 
 .settings-save-btn {
-  background: #7c3aed;
+  background: var(--roxo-destaque);
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -573,4 +572,123 @@ a {
 
 .settings-save-btn:hover {
   background: #6d28d9;
+}
+
+/* ===== 11. LOGIN PAGE ===== */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--fundo-principal);
+  color: var(--texto-principal);
+}
+
+.login-card {
+  background-color: #0b101a;
+  padding: 2.5rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.login-card h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+.login-card button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: var(--roxo-destaque);
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  margin-top: 1rem;
+}
+
+.login-card button:hover {
+  background-color: #6d28d9;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+
+.input-group label {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--texto-secundario);
+}
+
+.input-group input {
+  padding: 0.8rem;
+  border-radius: 4px;
+  border: 1px solid #1f2028;
+  background-color: #05080d;
+  color: #ffffff;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.input-group input:focus {
+  border-color: var(--roxo-destaque);
+}
+
+/* ===== 12. RESPONSIVIDADE ===== */
+@media (max-width: 720px) {
+  .sidebar {
+    width: 118px;
+    min-width: 118px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .dashboard {
+    display: block;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-width: 0;
+    min-height: auto;
+    padding: 8px;
+    border-right: 0;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .nav {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .workspace-section {
+    display: none;
+  }
+
+  .main {
+    padding: 18px 10px 40px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
 }

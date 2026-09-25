@@ -1,4 +1,4 @@
-import "../../App.css";
+import "../../global.css";
 
 const projetos = [
   { nome: "Engine Team", cor: "purple", tarefas: 12, concluidas: 8 },

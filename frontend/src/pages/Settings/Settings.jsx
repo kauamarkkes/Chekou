@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../../App.css";
+import "../../global.css";
 
 function Settings() {
   const [nome, setNome] = useState("Marcus");

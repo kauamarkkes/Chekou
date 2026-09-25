@@ -1,4 +1,4 @@
-import "../../App.css";
+import "../../global.css";
 
 const activities = [
   ["Damian Wayne", "moved Refactor database models to", "In Review", "purple", "10m ago", "DW"],

@@ -1,4 +1,4 @@
-import "../../App.css";
+import "../../global.css";
 
 const metricas = [
   { titulo: "Tasks Completed", valor: 47, variacao: "+12%", tipo: "positive" },
