@@ -5,6 +5,8 @@ function MyTasks() {
   const [tarefas, setTarefas] = useState([]);
   const [filtro, setFiltro] = useState("todas");
   const [novoTitulo, setNovoTitulo] = useState("");
+  const [editandoId, setEditandoId] = useState(null);
+  const [tituloEditado, setTituloEditado] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:3000/tarefas")
@@ -41,6 +43,34 @@ function MyTasks() {
         setNovoTitulo("");
       });
   }
+
+function iniciarEdicao(tarefa) {
+  setEditandoId(tarefa.id);
+  setTituloEditado(tarefa.titulo);
+}
+
+function cancelarEdicao() {
+  setEditandoId(null);
+  setTituloEditado("");
+}
+
+function salvarEdicao(id) {
+  const titulo = tituloEditado.trim();
+  if (!titulo) return;
+
+  fetch(`http://localhost:3000/tarefas/${id}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ titulo }),
+  })
+    .then((res) => res.json())
+    .then((tarefaAtualizada) => {
+      setTarefas((atuais) =>
+        atuais.map((t) => (t.id === id ? tarefaAtualizada : t))
+      );
+      cancelarEdicao();
+    });
+}
 
   const tarefasFiltradas = tarefas.filter((t) => {
     if (filtro === "pendentes") return !t.concluida;
@@ -97,16 +127,53 @@ function MyTasks() {
           </span>
         </div>
 
-        <div className="activities">
+       <div className="activities">
           {tarefasFiltradas.map((t) => (
             <div className="activity-row task-item" key={t.id}>
               <button
                 className={`task-checkbox ${t.concluida ? "checked" : ""}`}
                 onClick={() => alternarConclusao(t.id)}
               />
-              <span className={`task-title ${t.concluida ? "done" : ""}`}>
-                {t.titulo}
-              </span>
+
+              {editandoId === t.id ? (
+                <>
+                  <input
+                    type="text"
+                    className="task-edit-input"
+                    value={tituloEditado}
+                    autoFocus
+                    onChange={(e) => setTituloEditado(e.target.value)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter") salvarEdicao(t.id);
+                      if (e.key === "Escape") cancelarEdicao();
+                    }}
+                  />
+                  <button
+                    className="task-action-btn save"
+                    onClick={() => salvarEdicao(t.id)}
+                  >
+                    Salvar
+                  </button>
+                  <button
+                    className="task-action-btn cancel"
+                    onClick={cancelarEdicao}
+                  >
+                    Cancelar
+                  </button>
+                </>
+              ) : (
+                <>
+                  <span className={`task-title ${t.concluida ? "done" : ""}`}>
+                    {t.titulo}
+                  </span>
+                  <button
+                    className="task-action-btn edit"
+                    onClick={() => iniciarEdicao(t)}
+                  >
+                    Editar
+                  </button>
+                </>
+              )}
             </div>
           ))}
         </div>
