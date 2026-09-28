@@ -456,7 +456,8 @@ code, .counter {
   margin-bottom: 16px;
 }
 
-.task-add-input {
+.task-add-input,
+.task-edit-input {
   flex: 1;
   background: var(--fundo-card);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -468,7 +469,8 @@ code, .counter {
   transition: border-color 0.15s ease;
 }
 
-.task-add-input:focus {
+.task-add-input:focus,
+.task-edit-input:focus {
   border-color: var(--roxo-destaque);
 }
 
@@ -487,6 +489,39 @@ code, .counter {
 .task-add-btn:hover {
   background: var(--roxo-claro);
   border-color: var(--roxo-claro);
+}
+
+.task-action-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--texto-secundario);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.task-action-btn:hover {
+  border-color: rgba(124, 58, 237, 0.5);
+  color: #fff;
+}
+
+.task-action-btn.save {
+  border-color: var(--verde-sucesso);
+  color: var(--verde-sucesso);
+}
+
+.task-action-btn.save:hover {
+  background: var(--verde-sucesso);
+  color: #fff;
+}
+
+.task-action-btn.cancel:hover,
+.task-action-btn.edit:hover {
+  border-color: var(--roxo-destaque);
+  color: var(--roxo-claro);
 }
 
 /* ===== 8. PROJECTS ===== */
