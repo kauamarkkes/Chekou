@@ -4,6 +4,7 @@ import "../../global.css";
 function MyTasks() {
   const [tarefas, setTarefas] = useState([]);
   const [filtro, setFiltro] = useState("todas");
+  const [novoTitulo, setNovoTitulo] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:3000/tarefas")
@@ -23,6 +24,24 @@ function MyTasks() {
     });
 }
 
+  function adicionarTarefa(e) {
+    e.preventDefault();
+
+    const titulo = novoTitulo.trim();
+    if (!titulo) return;
+
+    fetch("http://localhost:3000/tarefas", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ titulo }),
+    })
+      .then((res) => res.json())
+      .then((tarefaCriada) => {
+        setTarefas((atuais) => [...atuais, tarefaCriada]);
+        setNovoTitulo("");
+      });
+  }
+
   const tarefasFiltradas = tarefas.filter((t) => {
     if (filtro === "pendentes") return !t.concluida;
     if (filtro === "concluidas") return t.concluida;
@@ -39,6 +58,19 @@ function MyTasks() {
       </header>
 
       <section className="activity-card">
+        <form className="task-add-form" onSubmit={adicionarTarefa}>
+          <input
+            type="text"
+            className="task-add-input"
+            placeholder="Nova tarefa..."
+            value={novoTitulo}
+            onChange={(e) => setNovoTitulo(e.target.value)}
+          />
+          <button type="submit" className="task-add-btn">
+            Adicionar
+          </button>
+        </form>
+
         <div className="tasks-toolbar">
           <div className="tasks-filter">
             <button
