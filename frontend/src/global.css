@@ -524,6 +524,11 @@ code, .counter {
   color: var(--roxo-claro);
 }
 
+.task-action-btn.delete:hover {
+  background: var(--vermelho-alerta);
+  border-color: var(--vermelho-alerta);
+  color: #fff;
+}
 /* ===== 8. PROJECTS ===== */
 .projects-grid {
   display: grid;
