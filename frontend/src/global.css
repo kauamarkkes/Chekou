@@ -450,6 +450,44 @@ code, .counter {
   text-decoration: line-through;
   opacity: 0.5;
 }
+.task-add-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.task-add-input {
+  flex: 1;
+  background: var(--fundo-card);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  padding: 8px 12px;
+  color: var(--texto-principal);
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+
+.task-add-input:focus {
+  border-color: var(--roxo-destaque);
+}
+
+.task-add-btn {
+  background: var(--roxo-destaque);
+  border: 1px solid var(--roxo-destaque);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.task-add-btn:hover {
+  background: var(--roxo-claro);
+  border-color: var(--roxo-claro);
+}
 
 /* ===== 8. PROJECTS ===== */
 .projects-grid {
@@ -878,3 +916,4 @@ code, .counter {
   color: inherit;
   display: block;
 }
+
