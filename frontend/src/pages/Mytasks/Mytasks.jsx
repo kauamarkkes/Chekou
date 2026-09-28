@@ -72,6 +72,15 @@ function salvarEdicao(id) {
     });
 }
 
+function excluirTarefa(id) {
+  fetch(`http://localhost:3000/tarefas/${id}`, {
+    method: "DELETE",
+  }).then((res) => {
+    if (res.ok) {
+      setTarefas((atuais) => atuais.filter((t) => t.id !== id));
+    }
+  });
+}
   const tarefasFiltradas = tarefas.filter((t) => {
     if (filtro === "pendentes") return !t.concluida;
     if (filtro === "concluidas") return t.concluida;
@@ -171,6 +180,13 @@ function salvarEdicao(id) {
                     onClick={() => iniciarEdicao(t)}
                   >
                     Editar
+                  </button>
+                 
+                  <button
+                    className="task-action-btn delete"
+                    onClick={() => excluirTarefa(t.id)}
+                  >
+                    Excluir
                   </button>
                 </>
               )}
