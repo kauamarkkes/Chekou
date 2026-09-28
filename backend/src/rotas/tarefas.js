@@ -44,6 +44,25 @@ rotaTaref.put('/:id', (req, res) => {
   res.json(tarefa);
 }); //atualiza o status de concluida da tarefa
 
+rotaTaref.patch('/:id', (req, res) => {
+  const id = Number(req.params.id);
+  const { titulo } = req.body;
+
+  const tarefa = tarefas.find((t) => t.id === id);
+
+  if (!tarefa) {
+    return res.status(404).json({ erro: 'Tarefa não encontrada' });
+  }
+
+  if (!titulo || !titulo.trim()) {
+    return res.status(400).json({ erro: 'O título é obrigatório' });
+  }
+
+  tarefa.titulo = titulo.trim();
+
+  res.json(tarefa);
+}); //edita o titulo de uma tarefa existente
+  
 rotaTaref.delete('/:id', (req, res) => {
   const id = Number(req.params.id); //pega o id que veio na url e transforma em numero
 
