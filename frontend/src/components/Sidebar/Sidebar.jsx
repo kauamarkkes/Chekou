@@ -56,23 +56,6 @@ function Sidebar() {
           Settings
         </NavLink>
       </nav>
-
-      <div className="workspace-section">
-        <div className="section-title">MY WORKSPACES</div>
-
-        {projetos.map((projeto) => (
-          <NavLink
-            to={projeto.rota}
-            key={projeto.nome}
-            className={({ isActive }) =>
-              `workspace ${isActive ? "active" : ""}`
-            }
-          >
-            <i className={`workspace-dot ${projeto.cor}`} />
-            {projeto.nome}
-          </NavLink>
-        ))}
-      </div>
     </aside>
   );
 }
