@@ -3,22 +3,73 @@ import { projetos } from "../../data/projetos";
 
 function Sidebar() {
   return (
-    <aside className="sidebar">
-      <NavLink to="/" className="brand"><span>⌂</span> Home</NavLink>
+    <aside nav className="nav">
+  <NavLink
+    to="/"
+    end
+    className={({ isActive }) =>
+      `nav-item ${isActive ? "active" : ""}`
+    }
+  >
+    <span>⌂</span>
+    Home
+  </NavLink>
 
       <nav className="nav">
-        <NavLink className="nav-item" to="/tarefas"><span>✓</span> My Tasks</NavLink>
-        <NavLink className="nav-item" to="/projetos"><span>▱</span> Projects</NavLink>
-        <NavLink className="nav-item" to="/analytics"><span>◔</span> Analytics</NavLink>
-        <NavLink className="nav-item" to="/configuracoes"><span>⚙</span> Settings</NavLink>
+        <NavLink
+          to="/tarefas"
+          className={({ isActive }) =>
+            `nav-item ${isActive ? "active" : ""}`
+          }
+        >
+          <span>✓</span>
+          My Tasks
+        </NavLink>
+
+        <NavLink
+          to="/projetos"
+          className={({ isActive }) =>
+            `nav-item ${isActive ? "active" : ""}`
+          }
+        >
+          <span>▱</span>
+          Projects
+        </NavLink>
+
+        <NavLink
+          to="/analytics"
+          className={({ isActive }) =>
+            `nav-item ${isActive ? "active" : ""}`
+          }
+        >
+          <span>◔</span>
+          Analytics
+        </NavLink>
+
+        <NavLink
+          to="/configuracoes"
+          className={({ isActive }) =>
+            `nav-item ${isActive ? "active" : ""}`
+          }
+        >
+          <span>⚙</span>
+          Settings
+        </NavLink>
       </nav>
 
       <div className="workspace-section">
         <div className="section-title">MY WORKSPACES</div>
-        {projetos.map((p) => (
-          <NavLink className="workspace" to={p.rota} key={p.nome}>
-            <i className={`workspace-dot ${p.cor}`} />
-            {p.nome}
+
+        {projetos.map((projeto) => (
+          <NavLink
+            to={projeto.rota}
+            key={projeto.nome}
+            className={({ isActive }) =>
+              `workspace ${isActive ? "active" : ""}`
+            }
+          >
+            <i className={`workspace-dot ${projeto.cor}`} />
+            {projeto.nome}
           </NavLink>
         ))}
       </div>
